@@ -88,9 +88,9 @@ class SMTPService:
         try:
             # Handle SSL vs TLS based on port or configuration
             if server_port == 465:
-                server = smtplib.SMTP_SSL(server_host, server_port, timeout=12)
+                server = smtplib.SMTP_SSL(server_host, server_port, timeout=4)
             else:
-                server = smtplib.SMTP(server_host, server_port, timeout=12)
+                server = smtplib.SMTP(server_host, server_port, timeout=4)
                 if use_tls:
                     server.starttls()
 

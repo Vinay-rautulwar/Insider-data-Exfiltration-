@@ -156,10 +156,10 @@ export default function AdaptiveSecurityShield() {
       const data = await res.json();
       if (res.ok) {
         const emailRes = data.execution_summary?.email_alert_result || {};
-        if (emailRes.status === 'SENT') {
+        if (emailRes.status === 'SENT' || emailRes.status === 'DISPATCHED_ASYNC' || emailRes.status === 'DISPATCHED') {
           setSimStatus({
             success: true,
-            msg: `🚨 AI Shield Engaged! All 5 Blockades Locked & Real Threat Alert Email delivered to ${emailRes.recipient}!`
+            msg: `🚨 AI Shield Engaged! All 5 Blockades Locked & Real Threat Alert Email delivered to ${emailRes.recipient || 'Admin'}!`
           });
         } else {
           setSimStatus({

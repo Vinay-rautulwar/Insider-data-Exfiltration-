@@ -209,7 +209,7 @@ class WindowsTelemetryAgent:
         }
 
         try:
-            resp = requests.post(BACKEND_URL, json=payload, timeout=3)
+            resp = requests.post(BACKEND_URL, json=payload, timeout=10)
             data = resp.json()
             pred = data.get("prediction", {})
             alert_created = data.get("alert_created", False)
